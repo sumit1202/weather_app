@@ -28,7 +28,6 @@ class HourlyForecastRowItem extends StatelessWidget {
             ),
             Icon(
               icon,
-              color: Colors.blueAccent,
               size: 35,
             ),
             const SizedBox(
@@ -36,6 +35,7 @@ class HourlyForecastRowItem extends StatelessWidget {
             ),
             Text(
               time,
+              maxLines: 1,
               style: const TextStyle(fontSize: 18),
             ),
           ],

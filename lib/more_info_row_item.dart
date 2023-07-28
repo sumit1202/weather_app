@@ -26,7 +26,6 @@ class MoreInfoRowItem extends StatelessWidget {
           Icon(
             icon,
             size: 35,
-            color: Colors.blueAccent,
           ),
           const SizedBox(
             height: 5,
