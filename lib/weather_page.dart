@@ -19,7 +19,8 @@ class _WeatherPageState extends State<WeatherPage> {
   Future<Map<String, dynamic>> getCurrentWeather() async {
     try {
       String cityName = 'Bangalore';
-      const secretAppKey = '';
+      const secretAppKey =
+          ''; 
       final result = await http.get(Uri.parse(
           'https://api.openweathermap.org/data/2.5/forecast?q=$cityName&APPID=$secretAppKey'));
 
@@ -75,7 +76,7 @@ class _WeatherPageState extends State<WeatherPage> {
           }
 
           final data = snapshot.data!;
-          final currentTemp = data['list'][0]['main']['temp'];
+          final double currentTemp = (data['list'][0]['main']['temp']) - 273.15;
           final currentSky = data['list'][0]['weather'][0]['main'];
           final currentPressure = data['list'][0]['main']['pressure'];
           final currentWindSpeed = data['list'][0]['wind']['speed'];
@@ -93,14 +94,13 @@ class _WeatherPageState extends State<WeatherPage> {
                     //height: 200,
                     child: Card(
                       elevation: 5,
-                      // color: Colors.indigo,
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              '$currentTemp °K',
+                              '${currentTemp.toStringAsFixed(1)} °C',
                               style: const TextStyle(
                                 fontWeight: FontWeight.bold,
                                 fontSize: 32,
@@ -165,9 +165,11 @@ class _WeatherPageState extends State<WeatherPage> {
                       itemBuilder: (context, i) {
                         final time =
                             DateTime.parse(data['list'][i + 1]['dt_txt']);
+
+                            final double forecastTemp = (data['list'][i + 1]['main']['temp']) - 273.15;
                         return HourlyForecastRowItem(
                           temperature:
-                              '${data['list'][i + 1]['main']['temp'].toString()} °K',
+                              '${forecastTemp.toStringAsFixed(1)} °C',
                           icon: data['list'][i + 1]['weather'][0]['main'] ==
                                       'Clouds' ||
                                   data['list'][i + 1]['weather'][0]['main'] ==
