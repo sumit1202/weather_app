@@ -4,6 +4,6 @@ A basic Flutter project to display the weather of Bangalore city.
 
 # Screenshot below:
 
-![Alt text](<Simulator Screenshot - iPhone 14 Pro Max - 2023-07-29 at 11.39.47.png>)
+![Untitled design](https://github.com/sumit1202/weather_app/assets/31153960/eddee820-a88a-44e2-b002-d3dfd71b171b)
 
 
